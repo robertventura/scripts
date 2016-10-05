@@ -7,14 +7,14 @@
 #--
 
 ## Declaració de variables
-url_scripts="https://raw.githubusercontent.com/robertventura/scripts/master/"
+export url_scripts="https://raw.githubusercontent.com/robertventura/scripts/master/"
 
 
 ## Realitzem un UPDATE dels paquets
 curl -fsSL ${url_scripts}centos70-update.sh | sh
 
 ## Instal·lació d'Apache
-curl -fsSL ${url_scripts}cento70-install-apache.sh | sh
+curl -fsSL ${url_scripts}centos70-install-apache.sh | sh
 
 ## Instal·lació d'Percona MySQL
 curl -fsSL ${url_scripts}centos70-install-percona-server.sh | sh
