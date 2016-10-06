@@ -11,8 +11,8 @@ yum install -y Percona-Server-server-$versio
 
 
 # Activem el servei
-systemctl enable mysql.service
-systemctl start  mysql.service
+systemctl enable mysqld.service
+systemctl start  mysqld.service
 
 #Obtenim el pwd temporal del fitxer /var/log/mysqld
 #Busquem la línia "[Note] A temporary password is generated for root@localhost: "
@@ -21,30 +21,29 @@ systemctl start  mysql.service
 echo "executa mysql_secure_installation"
 
 
-yum -y install expect
-
-// Not required in actual script
-MYSQL_ROOT_PASSWORD=P0t@t0es
-
-SECURE_MYSQL=$(expect -c "
-set timeout 10
-spawn mysql_secure_installation
-expect \"Enter current password for root (enter for none):\"
-send \"$MYSQL_ROOT_PASSWORD\r\"
-expect \"Change the root password?\"
-send \"n\r\"
-expect \"Remove anonymous users?\"
-send \"y\r\"
-expect \"Disallow root login remotely?\"
-send \"y\r\"
-expect \"Remove test database and access to it?\"
-send \"y\r\"
-expect \"Reload privilege tables now?\"
-send \"y\r\"
-expect eof
-")
-
-echo "$SECURE_MYSQL"
-
-yum -y remove expect
+#yum -y install expect
+#// Not required in actual script
+#MYSQL_ROOT_PASSWORD=P0t@t0es
+#
+#SECURE_MYSQL=$(expect -c "
+#set timeout 10
+#spawn mysql_secure_installation
+#expect \"Enter current password for root (enter for none):\"
+#send \"$MYSQL_ROOT_PASSWORD\r\"
+#expect \"Change the root password?\"
+#send \"n\r\"
+#expect \"Remove anonymous users?\"
+#send \"y\r\"
+#expect \"Disallow root login remotely?\"
+#send \"y\r\"
+#expect \"Remove test database and access to it?\"
+#send \"y\r\"
+#expect \"Reload privilege tables now?\"
+#send \"y\r\"
+#expect eof
+#")
+#
+#echo "$SECURE_MYSQL"
+#
+#yum -y remove expect
 
